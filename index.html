@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- <link rel="stylesheet" href="/src/style.css" /> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"
+		integrity="sha512-Kef5sc7gfTacR7TZKelcrRs15ipf7+t+n7Zh6mKNJbmW+/RRdCW9nwfLn4YX0s2nO6Kv5Y2ChqgIakaC6PW09A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script type="module" src="/src/index.ts"></script>
+	<title>Natan Chiodi</title>
+</head>
+
+<noscript>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		.wrapper {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			height: 100vh;
+			background-color: #f3f4f6;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			z-index: 9999;
+		}
+	</style>
+
+	<div class="wrapper">
+		<h1 class="text-4xl font-bold text-gray-900">JavaScript est désactivé</h1>
+
+		<p style="color: #4b5563; font-size: 1.25rem; margin-top: 1.25rem;">
+			Vous devez activer JavaScript pour pouvoir accéder à ce site.
+		</p>
+
+		<p style="color: #4b5563; font-size: 1.25rem; margin-top: 1.25rem;">
+			<a href="https://www.enable-javascript.com/fr/" target="_blank" rel="noopener noreferrer"
+				style="color: #3b82f6; text-decoration: underline;">Cliquez ici</a> pour savoir comment activer
+			JavaScript dans votre navigateur.
+		</p>
+	</div>
+</noscript>
+
+<body style="overflow: hidden;">
+	<div style="background-color: rgb(31 41 55); width: 100%; height: 100vh; position: fixed; top: 0; left: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999;"
+		id="loading-screen">
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+			style="margin: auto; background: none; display: block; shape-rendering: auto;" width="50px" height="50px"
+			viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+			<circle cx="50" cy="50" fill="none" stroke="#ffffff" stroke-width="10" r="35"
+				stroke-dasharray="164.93361431346415 56.97787143782138">
+				<animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s"
+					values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
+			</circle>
+		</svg>
+	</div>
+
+	<nav class="fixed bg-gray-800 top-0 left-0 w-full border-b-2 border-gray-700 z-50">
+		<div class="bg-gray-800 relative z-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex items-center justify-between h-16">
+				<a href="/" class="flex items-center">
+					<img class="h-8 w-8 rounded-full mx-2" src="/logo.png" alt="Logo">
+					<span class="mx-2 text-white text-md font-medium">Natan Chiodi</span>
+				</a>
+				<div class="hidden md:block">
+					<div class="ml-10 flex items-baseline space-x-4">
+						<a href="#home"
+							class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-200 ease-in-out">Accueil</a>
+						<a href="#about"
+							class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-200 ease-in-out">À
+							propos</a>
+						<a href="#projects"
+							class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-200 ease-in-out">Projets</a>
+						<a href="#skills"
+							class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-200 ease-in-out">Compétences</a>
+						<a href="#contact"
+							class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-200 ease-in-out">Contact</a>
+					</div>
+				</div>
+				<div class="flex md:hidden">
+					<button type="button" id="mobile-menu-button"
+						class="text-gray-300 hover:text-white inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
+						<span class="sr-only">Open menu</span>
+						<div id="mobile-menu-icon" class="w-10 h-7 relative my-50 duration-500 ease-in-out">
+							<span
+								class="block absolute h-0.5 w-full bg-white rounded-sm duration-500 ease-in-out top-0"></span>
+							<span
+								class="block absolute h-0.5 w-full bg-white rounded-sm duration-500 ease-in-out top-3"></span>
+							<span
+								class="block absolute h-0.5 w-full bg-white rounded-sm duration-500 ease-in-out top-3"></span>
+							<span
+								class="block absolute h-0.5 w-full bg-white rounded-sm duration-500 ease-in-out top-6"></span>
+						</div>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="mobile-menu"
+			class="md:hidden bg-gray-800 transition-all duration-500 ease-in-out transform fixed top-0 left-0 w-full z-40 h-0 opacity-0">
+			<div class="flex flex-col items-center justify-center h-full">
+				<a href="#home"
+					class="text-gray-300 hover:text-white px-3 py-2 my-3 rounded-md text-2xl font-medium transition duration-200 ease-in-out">Accueil</a>
+				<a href="#about"
+					class="text-gray-300 hover:text-white px-3 py-2 my-3 rounded-md text-2xl font-medium transition duration-200 ease-in-out">À
+					propos</a>
+				<a href="#projects"
+					class="text-gray-300 hover:text-white px-3 py-2 my-3 rounded-md text-2xl font-medium transition duration-200 ease-in-out">Projets</a>
+				<a href="#skills"
+					class="text-gray-300 hover:text-white px-3 py-2 my-3 rounded-md text-2xl font-medium transition duration-200 ease-in-out">Compétences</a>
+				<a href="#contact"
+					class="text-gray-300 hover:text-white px-3 py-2 my-3 rounded-md text-2xl font-medium transition duration-200 ease-in-out">Contact</a>
+			</div>
+		</div>
+	</nav>
+
+	<main class="flex flex-col justify-center items-center w-full">
+		<section class="relative w-full bg-gray-800 flex flex-col justify-start items-center" id="home"
+			style="height: 120vh;">
+			<div class="flex flex-col absolute h-fit justify-center items-start z-10 space-y-5 max-md:w-11/12 max-xl:w-9/12 max-xl:-translate-x-1/2 -translate-y-1/2 left-1/2 xl:left-96"
+				style="margin-top: 50vh;">
+				<span class="text-gray-800 text-xl font-medium">Bonjour, mon nom est</span>
+				<h1 class="text-white text-6xl font-semibold">Natan Chiodi.</h1>
+				<h2 class="text-indigo-100 text-5xl font-medium">Je suis développeur.</h2>
+				<p class="text-indigo-200 text-md max-w-xl">
+					Je suis un étudiant de 15 ans passionné par l'informatique et les nouvelles technologies.
+				</p>
+
+				<a href="#about"
+					class="about-btn relative outline outline-white hover:bg-white text-white hover:text-black transition-all duration-200 ease-in-out px-6 py-3 rounded-md text-lg font-medium">En
+					savoir plus</a>
+			</div>
+
+			<div class="absolute w-full h-full z-0" id="home-gradient"></div>
+			<div class="absolute -bottom-0 w-full">
+				<svg fill="#E5E7EB" preserveAspectRatio="none" viewBox="0 0 1000 300" class="scale-y-50 translate-y-1/4"
+					xmlns="http://www.w3.org/2000/svg">
+					<path class="opacity-10"
+						d="M 1014 264 v 122 h -808 l -172 -86 s 310.42 -22.84 402 -79 c 106 -65 154 -61 268 -12 c 107 46 195.11 5.94 275 137 z">
+					</path>
+					<path class="opacity-20"
+						d="M -302 55 s 235.27 208.25 352 159 c 128 -54 233 -98 303 -73 c 92.68 33.1 181.28 115.19 235 108 c 104.9 -14 176.52 -173.06 267 -118 c 85.61 52.09 145 123 145 123 v 74 l -1306 10 z">
+					</path>
+					<path class="opacity-30"
+						d="M -286 255 s 214 -103 338 -129 s 203 29 384 101 c 145.57 57.91 178.7 50.79 272 0 c 79 -43 301 -224 385 -63 c 53 101.63 -62 129 -62 129 l -107 84 l -1212 12 z">
+					</path>
+					<path class="opacity-40"
+						d="M -24 69 s 299.68 301.66 413 245 c 8 -4 233 2 284 42 c 17.47 13.7 172 -132 217 -174 c 54.8 -51.15 128 -90 188 -39 c 76.12 64.7 118 99 118 99 l -12 132 l -1212 12 z">
+					</path>
+					<path
+						d="M -12 201 s 70 83 194 57 s 160.29 -36.77 274 6 c 109 41 184.82 24.36 265 -15 c 55 -27 116.5 -57.69 214 4 c 49 31 95 26 95 26 l -6 151 l -1036 10 z">
+					</path>
+				</svg>
+			</div>
+		</section>
+
+		<a id="about" class="relative -top-16"></a>
+		<section class="relative w-full bg-gray-200 py-24">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="text-center">
+					<h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase">À propos</h2>
+					<p class="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+						Qui
+						suis-je ?</p>
+					<div class="flex flex-row max-md:flex-col">
+						<div class="w-full md:w-8/12 flex flex-col mr-10 text-left">
+							<p class="w-full mt-5 text-xl text-gray-500">
+								Je m'appelle Natan Chiodi, j'ai 15 ans et je suis un étudiant passionné
+								par
+								l'informatique et les nouvelles technologies.
+								Je développe des choses pendant mon temps libre: des sites web,
+								des logiciels, des applications mobiles et autres... (Voir la section <a
+									href="#projects" class="link text-indigo-600 hover:text-indigo-500">projets</a>).
+							</p>
+							<p class="w-full mt-5 text-xl text-gray-500">
+								Je suis actuellement en première générale au
+								<a href="https://www.lycee-pierre-marie-curie.fr/"
+									class="link text-indigo-600 hover:text-indigo-500">Lycée
+									Pierre et Marie Curie</a> de Menton.
+							</p>
+						</div>
+						<div class="w-full md:w-4/12 max-md:mt-20 flex flex-col items-center justify-center">
+							<div class="flex flex-col items-center justify-center">
+								<img class="w-40 h-auto rounded-full shadow-md" src="/logo.png" alt="Natan Chiodi">
+								<span class="text-gray-700 font-bold text-xl mt-5">Natan Chiodi</span>
+								<span class="text-gray-500 text-md">Étudiant / Développeur</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<a id="projects" class="relative -top-16"></a>
+		<section class="relative w-full bg-indigo-600 py-24">
+			<div class="absolute -rotate-1 bg-indigo-600 w-full h-10 z-10 -top-5"></div>
+
+			<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
+				<div class="text-center">
+					<h2 class="text-base font-semibold text-indigo-200 tracking-wide uppercase">Projets</h2>
+					<p class="mt-1 text-4xl font-extrabold text-white sm:text-5xl sm:tracking-tight lg:text-6xl">Mes
+						projets</p>
+
+					<div class="mt-10" id="projects-list">
+						<div class="flex flex-wrap justify-center">
+							<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
+								<div
+									class="relative bg-white rounded-lg overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 duration-300 ease-in-out">
+									<img class="w-full shadow-md"
+										src="https://res.cloudinary.com/natoune/image/upload/f_auto,q_auto/v1/natoune.fr/glfw-opengl-js"
+										alt="glfwJS & NodeGL">
+									<div class="px-6 py-4">
+										<span class="inline-block text-gray-700">2023 • Projet personnel</span>
+										<div class="font-bold text-xl">
+											<a href="https://github.com/Natoune/glfwJS" class="link">glfwJS</a> &
+											<a href="https://github.com/Natoune/NodeGL" class="link">NodeGL</a>
+										</div>
+										<p class="text-gray-700 text-base mt-2">
+											Portage des librairies graphiques <a href="https://www.glfw.org/"
+												class="link text-indigo-600 hover:text-indigo-500">GLFW</a> et <a
+												href="https://www.opengl.org/"
+												class="link text-indigo-600 hover:text-indigo-500">OpenGL</a> en
+											JS/TS
+											avec NodeJS.
+										</p>
+									</div>
+									<div class="px-6 pt-4 pb-2 space-y-2">
+										<a href="https://www.glfw.org/" class=" inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mx-1
+										hover:bg-gray-300 transition duration-200 ease-in-out">GLFW</a>
+										<a href="https://www.opengl.org/" class=" inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mx-1
+											hover:bg-gray-300 transition duration-200 ease-in-out">OpenGL</a>
+										<a href="https://www.typescriptlang.org/" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mx-1
+											hover:bg-gray-300 transition duration-200 ease-in-out">TypeScript</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
+								<div
+									class="relative bg-white rounded-lg overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 duration-300 ease-in-out">
+									<img class="w-full shadow-md"
+										src="https://res.cloudinary.com/natoune/image/upload/f_auto,q_auto/v1/natoune.fr/examplelauncher"
+										alt="glfwJS & NodeGL">
+									<div class="px-6 py-4">
+										<span class="inline-block text-gray-700">2023 • Projet personnel</span>
+										<div class="font-bold text-xl">
+											<a href="#" class="link">Minecraft Launcher</a>
+										</div>
+										<p class="text-gray-700 text-base mt-2">
+											Un launcher Minecraft personnalisé en ElectronJS avec un système de mise
+											à
+											jour, de news et de modpack via un panel en ligne PHP.
+										</p>
+									</div>
+									<div class="px-6 pt-4 pb-2 space-y-2">
+										<a href="https://www.electronjs.org/" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mx-1
+										hover:bg-gray-300 transition duration-200 ease-in-out">ElectronJS</a>
+
+										<a href="https://github.com/Voxelum/minecraft-launcher-core-node" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mx-1
+										hover:bg-gray-300 transition duration-200 ease-in-out">Voxelum
+											Launcher Core</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-4">
+								<div
+									class="relative bg-white rounded-lg overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 duration-300 ease-in-out">
+									<img class="w-1/2 mx-auto"
+										src="https://res.cloudinary.com/natoune/image/upload/f_auto,q_auto/v1/natoune.fr/featherpanel-logo"
+										alt="glfwJS & NodeGL">
+									<div class="px-6 py-4">
+										<span class="inline-block text-gray-700">2023 • Projet personnel</span>
+										<div class="font-bold text-xl">
+											<a href="https://feather-panel.pages.dev" class="link">Feather Panel</a>
+										</div>
+										<span class="text-red-500 text-sm">[En cours de développement]</span>
+										<p class="text-gray-700 text-base mt-2">
+											Panel de gestion de serveurs de jeux en ligne sur un réseau de
+											machines.
+										</p>
+										<p class="text-gray-700 text-base">
+											Le front-end utilise le framework <a href="https://svelte.dev/"
+												class="link text-indigo-600 hover:text-indigo-500">Svelte</a> et le
+											back-end est en <a href="https://www.expressjs.com/"
+												class="link text-indigo-600 hover:text-indigo-500">ExpressJS</a>.
+										</p>
+										<p class="text-gray-700 text-base">
+											La gestion des serveurs se fait via <a href="https://www.docker.com/"
+												class="link text-indigo-600 hover:text-indigo-500">Docker</a>.
+										</p>
+									</div>
+									<div class="px-6 pt-4 pb-2 space-y-2">
+										<a href="https://svelte.dev/" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mx-1
+											hover:bg-gray-300 transition duration-200 ease-in-out">Svelte</a>
+										<a href="https://www.expressjs.com/" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mx-1
+											hover:bg-gray-300 transition duration-200 ease-in-out">ExpressJS</a>
+										<a href="https://www.docker.com/" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mx-1
+											hover:bg-gray-300 transition duration-200 ease-in-out">Docker</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<a id="skills" class="relative -top-16"></a>
+		<section class="relative w-full bg-gray-200 py-24">
+			<div class="absolute -rotate-1 bg-gray-200 w-full h-10 z-10 -top-5"></div>
+
+			<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
+				<div class="text-center">
+					<h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase">Compétences</h2>
+					<p class="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+						Quels sont mes compétences ?</p>
+
+					<div class="bg-white rounded-lg shadow-xl mt-10 py-5">
+						<p class="text-2xl font-bold text-gray-900 text-center py-5">Software Development</p>
+
+						<div class="flex flex-row flex-wrap justify-center">
+							<a href="https://fr.wikipedia.org/wiki/C%2B%2B" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+									alt="C++">
+								<span class="text-center text-gray-700 font-bold">C++</span>
+							</a>
+							<a href="https://www.python.org/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+									alt="Python">
+								<span class="text-center text-gray-700 font-bold">Python</span>
+							</a>
+							<a href="https://flutter.dev/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+									alt="Flutter">
+								<span class="text-center text-gray-700 font-bold">Flutter</span>
+							</a>
+							<a href="https://www.opengl.org/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opengl/opengl-plain.svg"
+									alt="OpenGL">
+								<span class="text-center text-gray-700 font-bold">OpenGL</span>
+							</a>
+							<a href="https://www.libsdl.org/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sdl/sdl-plain.svg"
+									alt="SDL">
+								<span class="text-center text-gray-700 font-bold">SDL</span>
+							</a>
+							<a href="https://git-scm.com/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+									alt="Git">
+								<span class="text-center text-gray-700 font-bold">Git</span>
+							</a>
+							<a href="https://www.docker.com/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg"
+									alt="Docker">
+								<span class="text-center text-gray-700 font-bold">Docker</span>
+							</a>
+							<a href="https://fr.wikipedia.org/wiki/Linux" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+									alt="Linux">
+								<span class="text-center text-gray-700 font-bold">Linux</span>
+							</a>
+						</div>
+
+						<hr class="border-gray-300 my-5">
+						<p class="text-2xl font-bold text-gray-900 text-center py-5">Back-end Web</p>
+
+						<div class="flex flex-row flex-wrap justify-center">
+							<a href="https://fr.wikipedia.org/wiki/JavaScript" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+									alt="JavaScript">
+								<span class="text-center text-gray-700 font-bold">JavaScript</span>
+							</a>
+							<a href="https://www.typescriptlang.org/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+									alt="TypeScript">
+								<span class="text-center text-gray-700 font-bold">TypeScript</span>
+							</a>
+							<a href="https://www.php.net/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg"
+									alt="PHP">
+								<span class="text-center text-gray-700 font-bold">PHP</span>
+							</a>
+							<a href="https://nodejs.org/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+									alt="NodeJS">
+								<span class="text-center text-gray-700 font-bold">NodeJS</span>
+							</a>
+							<a href="https://expressjs.com/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+									alt="Express">
+								<span class="text-center text-gray-700 font-bold">Express</span>
+							</a>
+							<a href="https://socket.io/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg"
+									alt="Socket.IO">
+								<span class="text-center text-gray-700 font-bold">Socket.IO</span>
+							</a>
+							<a href="https://www.mysql.com/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+									alt="MySQL">
+								<span class="text-center text-gray-700 font-bold">MySQL</span>
+							</a>
+							<a href="https://www.mongodb.com/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+									alt="MongoDB">
+								<span class="text-center text-gray-700 font-bold">MongoDB</span>
+							</a>
+						</div>
+
+						<hr class="border-gray-300 my-5">
+						<p class="text-2xl font-bold text-gray-900 text-center py-5">Front-end Web</p>
+
+						<div class="flex flex-row flex-wrap justify-center">
+							<a href="https://www.w3.org/TR/html5" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+									alt="HTML5">
+								<span class="text-center text-gray-700 font-bold">HTML5</span>
+							</a>
+							<a href="https://www.w3.org/Style/CSS/Overview.fr.html" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+									alt="CSS3">
+								<span class="text-center text-gray-700 font-bold">CSS3</span>
+							</a>
+							<a href="https://fr.wikipedia.org/wiki/JavaScript" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+									alt="JavaScript">
+								<span class="text-center text-gray-700 font-bold">JavaScript</span>
+							</a>
+							<a href="https://www.typescriptlang.org/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+									alt="TypeScript">
+								<span class="text-center text-gray-700 font-bold">TypeScript</span>
+							</a>
+							<a href="https://svelte.dev/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg"
+									alt="Svelte">
+								<span class="text-center text-gray-700 font-bold">Svelte</span>
+							</a>
+							<a href="https://vitejs.dev/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://seeklogo.com/images/V/vite-logo-BFD4283991-seeklogo.com.png"
+									alt="Vite.js">
+								<span class="text-center text-gray-700 font-bold">Vite.js</span>
+							</a>
+							<a href="https://sass-lang.com/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg"
+									alt="Sass">
+								<span class="text-center text-gray-700 font-bold">Sass</span>
+							</a>
+							<a href="https://tailwindcss.com/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg"
+									alt="TailwindCSS">
+								<span class="text-center text-gray-700 font-bold">TailwindCSS</span>
+							</a>
+						</div>
+
+						<hr class="border-gray-300 my-5">
+
+						<p class="text-2xl font-bold text-gray-900 text-center py-5">Blockchain</p>
+
+						<div class="flex flex-row flex-wrap justify-center">
+							<a href="https://soliditylang.org/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg"
+									alt="Solidity">
+								<span class="text-center text-gray-700 font-bold">Solidity</span>
+							</a>
+							<a href="https://web3js.org/" target="_blank"
+								class="flex flex-col scale-100 hover:scale-105 transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-auto">
+								<img class="w-20 mx-auto"
+									src="https://seeklogo.com/images/W/web3js-logo-62DEE79B50-seeklogo.com.png"
+									alt="Web3.js">
+								<span class="text-center text-gray-700 font-bold">Web3.js</span>
+							</a>
+						</div>
+					</div>
+				</div>
+		</section>
+
+		<a id="contact" class="relative -top-16"></a>
+		<section class="relative w-full bg-indigo-600 py-24">
+			<div class="absolute -rotate-1 bg-indigo-600 w-full h-10 z-10 -top-5"></div>
+
+			<div class="relative w-full sm:max-w-7xl mx-auto sm:px-6 lg:px-8 z-20">
+				<div class="text-center">
+					<h2 class="text-base font-semibold text-indigo-200 tracking-wide uppercase">Contact</h2>
+					<p class="mt-1 text-4xl font-extrabold text-white sm:text-5xl sm:tracking-tight lg:text-6xl">Où
+						me retrouver ?</p>
+
+					<!-- Twitter, Github, Discord, YouTube, Mail -->
+					<div class="flex flex-row flex-wrap justify-center mt-10">
+						<a href="https://x.com/Nat0une_" target="_blank"
+							class="flex flex-row items-center justify-center bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-7 my-5 hover:scale-105">
+							<img class="w-14 sm:w-16 mx-auto"
+								src="https://cdn-icons-png.flaticon.com/512/5968/5968958.png" alt="Twitter">
+							<span class="text-center text-black font-bold text-xl ml-4">@Nat0une_</span>
+						</a>
+						<a href="https://github.com/Natoune" target="_blank"
+							class="flex flex-row items-center justify-center bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-7 my-5 hover:scale-105">
+							<img class="w-16 mx-auto"
+								src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+								alt="Github">
+							<span class="text-center text-black font-bold text-xl ml-4">Natoune</span>
+						</a>
+						<a
+							class="flex flex-row items-center justify-center bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-7 my-5 hover:scale-105">
+							<img class="w-14 sm:w-16 mx-auto"
+								src="https://cdn-icons-png.flaticon.com/512/5968/5968898.png" alt="Discord">
+							<span class="text-center text-black font-bold text-xl ml-4">natoune_</span>
+						</a>
+						<a href="https://www.youtube.com/@nat0une" target="_blank"
+							class="flex flex-row items-center justify-center bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-7 my-5 hover:scale-105">
+							<img class="w-14 sm:w-16 mx-auto"
+								src="https://cdn-icons-png.flaticon.com/512/5968/5968975.png" alt="YouTube">
+							<span class="text-center text-black font-bold text-xl ml-4">@nat0une</span>
+						</a>
+						<a href="mailto:contact@natoune.fr" target="_blank"
+							class="flex flex-row items-center justify-center bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition duration-200 ease-in-out cursor-pointer w-fit py-4 px-6 mx-7 my-5 hover:scale-105">
+							<img class="w-14 sm:w-16 mx-auto"
+								src="https://cdn-icons-png.flaticon.com/512/542/542689.png" alt="Mail">
+							<span class="text-center text-black font-bold text-xl ml-4">contact@natoune.fr</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="bg-gray-800 w-full py-10">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex flex-row flex-wrap justify-center">
+				<a href="https://github.com/Natoune/Portfolio" target="_blank"
+					class="text-gray-300 hover:text-gray-400 font-light transition duration-200 ease-in-out mx-5">Voir
+					le code
+					source sur Github</a>
+				<p class="text-gray-300 mx-5 font-semibold">
+					Site réalisé par Natan Chiodi avec <a href="https://vitejs.dev/"
+						class="text-indigo-600 hover:text-indigo-500 duration-200 ease-in-out"
+						target="_blank">Vite.js</a> et <a href="https://tailwindcss.com/"
+						class="text-indigo-600 hover:text-indigo-500 duration-200 ease-in-out"
+						target="_blank">TailwindCSS</a>.
+				</p>
+				<a href="https://github.com/Natoune/Portfolio/blob/master/LICENSE"
+					class="text-gray-300 hover:text-gray-400 font-light transition duration-200 ease-in-out mx-5">©
+					2023
+					Natan Chiodi - License MIT</a>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>

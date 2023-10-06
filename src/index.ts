@@ -33,3 +33,12 @@ window.addEventListener("DOMContentLoaded", () => {
 	document.body.style.overflow = "auto";
 	document.getElementById("loading-screen")!.remove();
 });
+
+/* Date */
+const msDiff = new Date().getTime() - new Date("2008-01-03").getTime();
+const yearsDiff = msDiff / (1000 * 60 * 60 * 24 * 365.25);
+const age = Math.floor(yearsDiff);
+
+document.querySelectorAll("#age").forEach((el) => {
+	el.innerHTML = age.toString();
+});

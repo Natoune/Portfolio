@@ -2,7 +2,7 @@
 
 Un site web présentant mes projets.
 
-![Screenshot](./.github/screenshot.png =700x)
+![Screenshot](./.github/screenshot.png)
 
 ## URL
 

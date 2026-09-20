@@ -2,12 +2,12 @@
 
 Un site web présentant mes projets.
 
-<img src="./.github/screenshot.png" width="700">
+![Screenshot](./.github/screenshot.png =700x)
 
-# URL
+## URL
 
-Le site est disponible à l'adresse suivante : https://www.natoune.fr/
+Le site est disponible à l'adresse suivante : <https://www.natanchiodi.fr/>
 
-# Crédits
+## Crédits
 
 [Natan Chiodi](https://github.com/Natoune): Créateur du projet

@@ -8,12 +8,14 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@12.5.1",
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.13",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.13",
-    "typescript": "^5.9.2",
-    "vite": "^7.1.5"
+    "@fontsource/poppins": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@tsparticles/engine": "^4.4.0",
+    "@tsparticles/slim": "^4.4.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0"
   }
 }
